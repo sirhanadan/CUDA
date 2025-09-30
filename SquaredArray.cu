@@ -5,7 +5,7 @@
 //General code: 
 /*
 less effecient if multiplication is expensive since it'll run 64 multiplications serially instaed of parallel
-for(int i = o; i<64; i++){ 
+for(int i = o; i<size; i++){ 
     out[I] = in[I]*in[I]; 
 } 
 */
@@ -46,7 +46,7 @@ notes:
 
 //this is the CPU code
 int main(int argc, char** argv){
-    const int ARRAY_SIZE = 64;
+    const int ARRAY_SIZE = 16;
     const int ARRAY_BYTES = ARRAY_SIZE*sizeof(float);
 
     //generate the input array on the host aka the CPU
