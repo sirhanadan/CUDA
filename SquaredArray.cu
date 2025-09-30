@@ -54,7 +54,7 @@ int main(int argc, char** argv){
     for(int i=0; i<ARRAY_SIZE; i++ ){
         h_in[i] = float(i);
     }
-    float h_out[ARRAY_sIZE];
+    float h_out[ARRAY_SIZE];
 
     //declare GPU memory pointers, the pointers shuold be on the cpu but the memory allocated should be on the GPU
     float* d_in;
@@ -62,7 +62,7 @@ int main(int argc, char** argv){
 
     //allocate GPU memory - to tell cude this is GPU memory
     cudaMalloc( (void**) &d_in, ARRAY_BYTES);
-    cudamalloc( (void**) &d_out, ARRAY_BYTES);
+    cudaMalloc( (void**) &d_out, ARRAY_BYTES);
 
     //transfer the array to the GPU
     //cudeMalloc(to, from, size in bytes, direction of the transfer: cudaMemcpyHostToDevice, cudaMemcpyDeviceToHost, cudaMemcpyDeviceToDevice, cudaMemcpyDefault)
@@ -80,12 +80,12 @@ int main(int argc, char** argv){
     */
 
     //copy back the result array to CPU
-    cudeMemcpy(h_out, d_out, ARRAY_BYTES, cudaMemcpyDeviceToHost);
+    cudaMemcpy(h_out, d_out, ARRAY_BYTES, cudaMemcpyDeviceToHost);
 
     //print the resulting array
     for(int i=0; i<ARRAY_SIZE; i++ ){
         printf("%f", h_out[i]);
-        print(((i%4)!=3) ? "\t" : "\n"); //to print with tabs and every 4 elemnts new line
+        printf(((i%4)!=3) ? "\t" : "\n"); //to print with tabs and every 4 elemnts new line
     }
 
     //free the meory
