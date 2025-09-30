@@ -82,6 +82,12 @@ int main(int argc, char** argv){
     //copy back the result array to CPU
     cudaMemcpy(h_out, d_out, ARRAY_BYTES, cudaMemcpyDeviceToHost);
 
+    // Check for any errors after kernel launch
+    cudaError_t err = cudaGetLastError();
+    if (err != cudaSuccess) {
+        printf("CUDA error: %s\n", cudaGetErrorString(err));
+    }
+
     //print the resulting array
     for(int i=0; i<ARRAY_SIZE; i++ ){
         printf("%f", h_out[i]);
@@ -91,6 +97,9 @@ int main(int argc, char** argv){
     //free the meory
     cudaFree(d_in);
     cudaFree(d_out);
+
+
+
 
     return 0; //never forget bruv
 
