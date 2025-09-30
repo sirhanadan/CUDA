@@ -50,7 +50,7 @@ int main(int argc, char** argv){
     const int ARRAY_BYTES = ARRAY_SIZE*sizeof(float);
 
     //generate the input array on the host aka the CPU
-    float h_in[ARRAY_sIZE];
+    float h_in[ARRAY_SIZE];
     for(int i=0; i<ARRAY_SIZE; i++ ){
         h_in[i] = float(i);
     }
