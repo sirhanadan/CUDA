@@ -78,7 +78,7 @@ int main(int argc, char** argv){
         2. we can run many blocks at the same time
         3. max number of threads per block is up to 512 in older GPUs and 1024 in newer GPUs
     */
-
+    cudaDeviceSynchronize();
     //copy back the result array to CPU
     cudaMemcpy(h_out, d_out, ARRAY_BYTES, cudaMemcpyDeviceToHost);
 
